@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import ShowListItem from "./ShowListItem.svelte";
 
   export let selectedDate;
   let allShowData;
@@ -38,8 +39,22 @@
 </script>
 
 <p>selected date: {selectedDate}</p>
-<ul>
+<ul class="list">
   {#each selectedDateShowData as show}
-    <li>{show.description}</li>
+    <li class="list__item"><ShowListItem {show} /></li>
   {/each}
 </ul>
+
+<style>
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .list__item {
+    padding: 1rem;
+    border: 1px solid #c9c8c3;
+    border-radius: 1rem;
+  }
+</style>
