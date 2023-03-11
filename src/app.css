@@ -24,15 +24,20 @@ body {
 }
 
 :root {
+  --app-dark-primary: #121314;
+  --app-dark-contrast-primary: #d1dae3;
   --app-dark-secondary: #181a1f;
   --app-dark-contrast-secondary: #cbc0c3;
 
+  --app-light-primary: #fffeff;
+  --app-light-contrast-primary: #181a1f;
   --app-light-secondary: #fffeff;
   --app-light-contrast-secondary: #181a1f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --text-primary: var(--app-dark-contrast-primary);
     --date-picker-background: var(--app-dark-secondary);
     --date-picker-foreground: var(--app-dark-contrast-secondary);
   }
@@ -40,7 +45,13 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
+    --text-primary: var(--app-light-contrast-primary);
     --date-picker-background: var(--app-light-secondary);
     --date-picker-foreground: var(--app-light-contrast-secondary);
   }
+}
+
+@font-face {
+  font-family: racing-sans-one;
+  src: url("/fonts/RacingSansOne-Regular.ttf");
 }

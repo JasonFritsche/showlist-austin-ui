@@ -10,7 +10,9 @@
   let selectedDate;
 </script>
 
-<header>Shows In Austin</header>
+<header class="app-header">
+  <h1 class="app-header__title">Shows In Austin</h1>
+</header>
 
 <main>
   <div>
@@ -22,6 +24,11 @@
 </main>
 
 <style>
+  .app-header__title {
+    font-family: racing-sans-one, Arial;
+    text-align: center;
+    color: var(--text-primary);
+  }
   main {
     display: flex;
   }
