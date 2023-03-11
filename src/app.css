@@ -4,9 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,30 +11,9 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.card {
-  padding: 2em;
 }
 
 #app {
@@ -47,9 +23,24 @@ h1 {
   flex-direction: column;
 }
 
+:root {
+  --app-dark-secondary: #181a1f;
+  --app-dark-contrast-secondary: #cbc0c3;
+
+  --app-light-secondary: #fffeff;
+  --app-light-contrast-secondary: #181a1f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --date-picker-background: var(--app-dark-secondary);
+    --date-picker-foreground: var(--app-dark-contrast-secondary);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --date-picker-background: var(--app-light-secondary);
+    --date-picker-foreground: var(--app-light-contrast-secondary);
   }
 }

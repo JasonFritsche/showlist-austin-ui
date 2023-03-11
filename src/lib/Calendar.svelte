@@ -12,5 +12,4 @@
   });
 </script>
 
-<h1>Calendar</h1>
 <DatePicker bind:value={selectedDate} min={minDate} />
