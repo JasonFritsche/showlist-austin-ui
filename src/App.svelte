@@ -3,7 +3,6 @@
   import ShowList from "./lib/ShowList.svelte";
 
   function handleDateChanged(event) {
-    console.log("event", event);
     selectedDate = event.detail.selectedDate;
   }
 
@@ -15,12 +14,8 @@
 </header>
 
 <main>
-  <div>
-    <Calendar on:dateChanged={handleDateChanged} />
-  </div>
-  <div>
-    <ShowList {selectedDate} />
-  </div>
+  <Calendar on:dateChanged={handleDateChanged} />
+  <ShowList {selectedDate} />
 </main>
 
 <style>
@@ -31,5 +26,7 @@
   }
   main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>

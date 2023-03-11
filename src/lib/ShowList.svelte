@@ -38,21 +38,26 @@
   }
 </script>
 
-<p>selected date: {selectedDate}</p>
-<ul class="list">
-  {#each selectedDateShowData as show}
-    <li class="list__item"><ShowListItem {show} /></li>
-  {/each}
-</ul>
+<div>
+  <p>selected date: {selectedDate}</p>
+  <ul class="list">
+    {#each selectedDateShowData as show}
+      <li class="list__item"><ShowListItem {show} /></li>
+    {/each}
+  </ul>
+</div>
 
 <style>
   .list {
     list-style: none;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
   }
   .list__item {
+    width: 100%;
     padding: 1rem;
     border: 1px solid #c9c8c3;
     border-radius: 1rem;
