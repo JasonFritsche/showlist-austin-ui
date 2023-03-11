@@ -12,4 +12,6 @@
   });
 </script>
 
-<DatePicker bind:value={selectedDate} min={minDate} />
+<div>
+  <DatePicker bind:value={selectedDate} min={minDate} />
+</div>
