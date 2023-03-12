@@ -39,7 +39,6 @@
 </script>
 
 <div>
-  <p>selected date: {selectedDate}</p>
   <ul class="list">
     {#each selectedDateShowData as show}
       <li class="list__item"><ShowListItem {show} /></li>

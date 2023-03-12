@@ -1,6 +1,6 @@
 <script>
-  import Calendar from "./lib/Calendar.svelte";
-  import ShowList from "./lib/ShowList.svelte";
+  import Date from "./lib/components/Date.svelte";
+  import ShowList from "./lib/components/ShowList.svelte";
 
   function handleDateChanged(event) {
     selectedDate = event.detail.selectedDate;
@@ -14,7 +14,7 @@
 </header>
 
 <main>
-  <Calendar on:dateChanged={handleDateChanged} />
+  <Date on:dateChanged={handleDateChanged} />
   <ShowList {selectedDate} />
 </main>
 
@@ -27,6 +27,7 @@
   main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0.5rem;
   }
 </style>
