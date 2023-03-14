@@ -1,10 +1,14 @@
 <script>
   import { onMount } from "svelte";
+  import { formatDate } from "../functions/date";
   import ShowListItem from "./ShowListItem.svelte";
 
   export let selectedDate;
   let allShowData;
   let selectedDateShowData = [];
+
+  $: formattedDate = formatDate(selectedDate);
+
   onMount(async () => {
     await fetch(
       `https://raw.githubusercontent.com/JasonFritsche/showlist-austin-scraper/main/showdata.json`
@@ -38,13 +42,14 @@
   }
 </script>
 
-<div>
-  <ul class="list">
-    {#each selectedDateShowData as show}
-      <li class="list__item"><ShowListItem {show} /></li>
-    {/each}
-  </ul>
-</div>
+{#if selectedDate}
+  <h2>{formattedDate?.dayName}, {formattedDate?.date}</h2>
+{/if}
+<ul class="list">
+  {#each selectedDateShowData as show}
+    <li class="list__item"><ShowListItem {show} /></li>
+  {/each}
+</ul>
 
 <style>
   .list {
