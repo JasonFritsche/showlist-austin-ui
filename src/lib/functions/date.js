@@ -24,6 +24,7 @@ const days = [
 ];
 
 export function formatDate(value) {
+  if (!value) return;
   const year = value.getFullYear();
   const date = value.getDate();
   const monthName = months[value.getMonth()];
