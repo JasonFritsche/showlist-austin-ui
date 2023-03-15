@@ -15,7 +15,8 @@
 
 <style>
   .item {
-    color: #c9c8c3;
+    color: var(--app-contrast-primary);
+    text-decoration: none;
   }
   .item__header {
     font-size: 0.9rem;

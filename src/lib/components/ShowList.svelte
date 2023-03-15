@@ -1,13 +1,10 @@
 <script>
   import { onMount } from "svelte";
-  import { formatDate } from "../functions/date";
   import ShowListItem from "./ShowListItem.svelte";
 
   export let selectedDate;
   let allShowData;
   let selectedDateShowData = [];
-
-  $: formattedDate = formatDate(selectedDate);
 
   onMount(async () => {
     await fetch(
@@ -42,9 +39,6 @@
   }
 </script>
 
-{#if selectedDate}
-  <h2>{formattedDate?.dayName}, {formattedDate?.date}</h2>
-{/if}
 <ul class="list">
   {#each selectedDateShowData as show}
     <li class="list__item"><ShowListItem {show} /></li>
@@ -55,15 +49,29 @@
   .list {
     list-style: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
   }
   .list__item {
     width: 100%;
     padding: 1rem;
-    border: 1px solid #c9c8c3;
-    border-radius: 1rem;
+    border-left: 1px solid var(--app-contrast-secondary);
+    border-right: 1px solid var(--app-contrast-secondary);
+    border-bottom: 1px solid var(--app-contrast-secondary);
+  }
+
+  .list__item:first-child {
+    border-top: 1px solid var(--app-contrast-secondary);
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+
+  .list__item:last-child {
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
   }
 </style>

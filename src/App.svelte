@@ -35,15 +35,15 @@
   .main {
     display: grid;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
   }
   .main__show-container {
     display: grid;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(450px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(400px, auto));
   }
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1200px) {
     .main__show-container > div:nth-child(1) {
       order: 1;
     }
