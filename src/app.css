@@ -43,6 +43,7 @@ body {
     --app-contrast-secondary: var(--app-dark-contrast-secondary);
 
     --text-primary: var(--app-dark-contrast-primary);
+    --text-secondary: var(--app-dark-contrast-secondary);
     --date-picker-background: var(--app-dark-secondary);
     --date-picker-foreground: var(--app-dark-contrast-secondary);
   }

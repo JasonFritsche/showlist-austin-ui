@@ -28,5 +28,17 @@
   .date-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin: 0 6px 0 6px;
+    border: 1px solid var(--app-contrast-secondary);
+    border-radius: 6px;
+    gap: 1rem;
+  }
+
+  .date-container__date-picker {
+    -webkit-box-shadow: -3px 0px 28px -7px rgba(163, 163, 163, 0.58);
+    -moz-box-shadow: -3px 0px 28px -7px rgba(163, 163, 163, 0.58);
+    box-shadow: -3px 0px 28px -7px rgba(163, 163, 163, 0.58);
   }
 </style>
