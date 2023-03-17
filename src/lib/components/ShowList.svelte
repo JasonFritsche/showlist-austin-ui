@@ -16,6 +16,7 @@
       .then((data) => {
         if (data && data.allShowData) {
           allShowData = data.allShowData;
+          console.log("allShowData", allShowData);
         }
       });
   });

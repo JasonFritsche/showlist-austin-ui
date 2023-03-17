@@ -66,3 +66,8 @@ body {
   font-family: racing-sans-one;
   src: url("/fonts/RacingSansOne-Regular.ttf");
 }
+
+@font-face {
+  font-family: hind;
+  src: url("/fonts/Hind-Regular.ttf");
+}
