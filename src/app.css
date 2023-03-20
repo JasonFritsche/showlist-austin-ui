@@ -23,16 +23,28 @@ body {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
 :root {
   --app-dark-primary: #121314;
   --app-dark-contrast-primary: #d1dae3;
   --app-dark-secondary: #181a1f;
   --app-dark-contrast-secondary: #9199a1;
+  --app-dark-tertiary: #17242e;
+  --app-dark-contrast-tertiary: #67b4f0;
 
   --app-light-primary: #fffeff;
   --app-light-contrast-primary: #181a1f;
   --app-light-secondary: #fffeff;
   --app-light-contrast-secondary: #181a1f;
+  --app-light-tertiary: #67b4f0;
+  --app-light-contrast-tertiary: #17242e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,6 +53,9 @@ body {
     --app-contrast-primary: var(--app-dark-contrast-primary);
     --app-secondary: var(--app-dark-secondary);
     --app-contrast-secondary: var(--app-dark-contrast-secondary);
+
+    --app-tertiary: var(--app-dark-tertiary);
+    --app-contrast-tertiary: var(--app-dark-contrast-tertiary);
 
     --text-primary: var(--app-dark-contrast-primary);
     --text-secondary: var(--app-dark-contrast-secondary);
@@ -56,7 +71,11 @@ body {
     --app-secondary: var(--app-light-secondary);
     --app-contrast-secondary: var(--app-light-contrast-secondary);
 
+    --app-tertiary: var(--app-light-tertiary);
+    --app-contrast-tertiary: var(--app-light-contrast-tertiary);
+
     --text-primary: var(--app-light-contrast-primary);
+    --text-secondary: var(--app-light-contrast-secondary);
     --date-picker-background: var(--app-light-secondary);
     --date-picker-foreground: var(--app-light-contrast-secondary);
   }
