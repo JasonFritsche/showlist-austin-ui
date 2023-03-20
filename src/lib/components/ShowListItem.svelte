@@ -2,7 +2,7 @@
   export let show;
 </script>
 
-<a class="item" href={show.eventLink} target="_blank" rel="noopener noreferrer">
+<div class="item">
   <h3 class="item__header">{show.description}</h3>
 
   {#if show.venue.title}
@@ -11,12 +11,14 @@
   {#if show.time}
     <h5>{show.time}</h5>
   {/if}
-</a>
+</div>
 
 <style>
   .item {
     color: var(--app-contrast-primary);
-    text-decoration: none;
+  }
+  .item:hover {
+    cursor: pointer;
   }
   .item__header {
     font-size: 0.9rem;

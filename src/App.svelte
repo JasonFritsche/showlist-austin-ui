@@ -7,7 +7,13 @@
     selectedDate = event.detail.selectedDate;
   }
 
+  function handleselectedShowChanged(event) {
+    selectedShow = event.detail.selectedShow;
+    console.log("selectedShow", selectedShow);
+  }
+
   let selectedDate;
+  let selectedShow;
 </script>
 
 <header class="app-header">
@@ -17,12 +23,17 @@
 <main class="main">
   <Date on:dateChanged={handleDateChanged} />
   <div class="main__show-container">
-    <div>
-      <ShowList {selectedDate} />
+    <div class="main__show-container__showlist-wrap">
+      <ShowList
+        {selectedDate}
+        on:selectedShowChanged={handleselectedShowChanged}
+      />
     </div>
-    <div>
-      <ShowDetails />
-    </div>
+    {#if selectedShow}
+      <div>
+        <ShowDetails {selectedShow} />
+      </div>
+    {/if}
   </div>
 </main>
 
@@ -36,11 +47,18 @@
     display: grid;
     align-items: start;
     grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    overflow: hidden;
   }
   .main__show-container {
     display: grid;
     align-items: start;
     grid-template-columns: repeat(auto-fill, minmax(400px, auto));
+  }
+
+  .main__show-container__showlist-wrap {
+    display: flex;
+    align-items: center;
+    max-width: 97vw;
   }
 
   @media (max-width: 1200px) {

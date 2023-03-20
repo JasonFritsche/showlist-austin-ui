@@ -1,10 +1,22 @@
 <script>
-  import { onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import ShowListItem from "./ShowListItem.svelte";
+
+  const dispatch = createEventDispatcher();
 
   export let selectedDate;
   let allShowData;
   let selectedDateShowData = [];
+  let selectedShow;
+
+  function handleSelectedShow(show) {
+    console.log("show", show);
+    selectedShow = show;
+  }
+
+  $: dispatch("selectedShowChanged", {
+    selectedShow,
+  });
 
   onMount(async () => {
     await fetch(
@@ -16,7 +28,6 @@
       .then((data) => {
         if (data && data.allShowData) {
           allShowData = data.allShowData;
-          console.log("allShowData", allShowData);
         }
       });
   });
@@ -41,8 +52,15 @@
 </script>
 
 <ul class="list">
-  {#each selectedDateShowData as show}
-    <li class="list__item"><ShowListItem {show} /></li>
+  {#each selectedDateShowData as show, i}
+    <li
+      tabindex="-1"
+      class="list__item"
+      on:click={() => handleSelectedShow(show)}
+      on:keypress={() => handleSelectedShow(show)}
+    >
+      <ShowListItem {show} />
+    </li>
   {/each}
 </ul>
 
@@ -56,6 +74,7 @@
     height: 90vh;
     overflow: hidden;
     overflow-y: scroll;
+    max-width: 97vw;
   }
   .list__item {
     width: 100%;
@@ -63,6 +82,11 @@
     border-left: 1px solid var(--app-contrast-secondary);
     border-right: 1px solid var(--app-contrast-secondary);
     border-bottom: 1px solid var(--app-contrast-secondary);
+  }
+
+  li.list__item:focus {
+    background-color: var(--app-tertiary);
+    outline: none;
   }
 
   .list__item:first-child {
