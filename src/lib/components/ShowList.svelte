@@ -79,9 +79,9 @@
   .list__item {
     width: 100%;
     padding: 1rem;
-    border-left: 1px solid var(--app-contrast-secondary);
-    border-right: 1px solid var(--app-contrast-secondary);
-    border-bottom: 1px solid var(--app-contrast-secondary);
+    border-left: 6px solid var(--app-contrast-secondary);
+    border-right: 6px solid var(--app-contrast-secondary);
+    border-bottom: 6px solid var(--app-contrast-secondary);
   }
 
   li.list__item:focus {
@@ -90,7 +90,7 @@
   }
 
   .list__item:first-child {
-    border-top: 1px solid var(--app-contrast-secondary);
+    border-top: 6px solid var(--app-contrast-secondary);
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
   }

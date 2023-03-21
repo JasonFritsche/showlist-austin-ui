@@ -2,10 +2,14 @@
   import Icon from "./Icon.svelte";
 
   export let selectedShow;
-  console.log("selectedShow", selectedShow);
 </script>
 
 <div class="container flex">
+  { #if !selectedShow}
+    <h2 class="container__venue__event flex align-center">
+      Select a show to see details
+    </h2>
+  {/if}
   <div class="container__venue">
     {#if selectedShow?.description}
       <h2 class="container__venue__event flex align-center">
@@ -27,14 +31,14 @@
       {#if selectedShow?.venue?.href}
         <Icon name="map-pin" strokeWidth="2" />
         <a
-          class="anchor"
+          class="anchor pad-left-4"
           href={selectedShow.venue.href}
           target="_blank"
           rel="noopener noreferrer"
         >
           {selectedShow?.venue?.title}
         </a>
-      {:else}
+      {:else if selectedShow?.venue?.title}
         <Icon name="map-pin" strokeWidth="2" />{selectedShow?.venue?.title}
       {/if}
     </h3>
@@ -42,7 +46,7 @@
       <h4 class="container__venue__map flex align-center">
         <Icon name="map" strokeWidth="2" />
         <a
-          class="anchor"
+          class="anchor pad-left-4"
           href={selectedShow.venue.map}
           target="_blank"
           rel="noopener noreferrer"
@@ -57,6 +61,7 @@
 <style>
   .container {
     width: 100%;
+    padding: 0 6px;
   }
   .container__venue {
     flex: 1;
@@ -71,9 +76,6 @@
   .container__venue__title {
     font-size: 1.1rem;
     font-weight: 300;
-  }
-
-  .container__venue__map {
   }
 
   .anchor {
