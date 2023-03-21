@@ -23,17 +23,13 @@
 <main class="main">
   <Date on:dateChanged={handleDateChanged} />
   <div class="main__show-container">
-    <div class="main__show-container__showlist-wrap">
+    <div class="main__show-container__showlist-wrap pad-left-4">
       <ShowList
         {selectedDate}
         on:selectedShowChanged={handleselectedShowChanged}
       />
     </div>
-    {#if selectedShow}
-      <div>
-        <ShowDetails {selectedShow} />
-      </div>
-    {/if}
+      <ShowDetails {selectedShow} />
   </div>
 </main>
 
@@ -47,12 +43,7 @@
     display: grid;
     align-items: start;
     grid-template-columns: repeat(auto-fit, minmax(400px, auto));
-    overflow: hidden;
-  }
-  .main__show-container {
-    display: grid;
-    align-items: start;
-    grid-template-columns: repeat(auto-fill, minmax(400px, auto));
+    padding-bottom: 1rem;
   }
 
   .main__show-container__showlist-wrap {
@@ -60,10 +51,34 @@
     align-items: center;
     max-width: 97vw;
   }
+  
+  @media (max-width: 991px) {
+    .main {
+      overflow: auto;
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .main {overflow: hidden;}
+  }
 
   @media (max-width: 1200px) {
     .main__show-container > div:nth-child(1) {
       order: 1;
+    }
+    .main__show-container {
+      display: grid;
+      align-items: start;
+      grid-template-rows: auto;
+    }
+  }
+
+  @media (min-width: 1199px) {
+    .main__show-container {
+      display: grid;
+      align-items: start;
+      grid-template-columns: 3fr 2fr;
     }
   }
 </style>

@@ -31,6 +31,38 @@ body {
   align-items: center;
 }
 
+.pad-left-1 {
+  padding-left: 1px;
+}
+
+.pad-left-2 {
+  padding-left: 2px;
+}
+
+.pad-left-3 {
+  padding-left: 3px;
+}
+
+.pad-left-4 {
+  padding-left: 4px;
+}
+
+.pad-right-1 {
+  padding-right: 1px;
+}
+
+.pad-right-2 {
+  padding-right: 2px;
+}
+
+.pad-right-3 {
+  padding-right: 3px;
+}
+
+.pad-right-4 {
+  padding-right: 4px;
+}
+
 :root {
   --app-dark-primary: #121314;
   --app-dark-contrast-primary: #d1dae3;
