@@ -62,6 +62,7 @@
   .container {
     width: 100%;
     padding: 0 6px;
+    min-height: 100px;
   }
   .container__venue {
     flex: 1;

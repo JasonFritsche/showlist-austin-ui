@@ -9,11 +9,15 @@
 
   function handleselectedShowChanged(event) {
     selectedShow = event.detail.selectedShow;
-    console.log("selectedShow", selectedShow);
+  }
+
+  function handleAllShowDataChanged(event) {
+    allShowData = event.detail.allShowData;
   }
 
   let selectedDate;
   let selectedShow;
+  let allShowData;
 </script>
 
 <header class="app-header">
@@ -21,12 +25,13 @@
 </header>
 
 <main class="main">
-  <Date on:dateChanged={handleDateChanged} />
+  <Date on:dateChanged={handleDateChanged} {allShowData} />
   <div class="main__show-container">
     <div class="main__show-container__showlist-wrap pad-left-4">
       <ShowList
         {selectedDate}
         on:selectedShowChanged={handleselectedShowChanged}
+        on:allShowDataChanged={handleAllShowDataChanged}
       />
     </div>
       <ShowDetails {selectedShow} />
@@ -42,7 +47,7 @@
   .main {
     display: grid;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     padding-bottom: 1rem;
   }
 
