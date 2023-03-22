@@ -1,28 +1,40 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { DatePicker } from "date-picker-svelte";
-  import { formatDate } from "../functions/date";
+  import { formatDate, getDateFromShortIsoDate } from "../functions/date";
 
   let minDate = new Date();
   let selectedDate = minDate;
+  let maxDate;
+
+  export let allShowData;
 
   const dispatch = createEventDispatcher();
+
+  function findLastDateWithShows() {
+    const lastDateWithShows = allShowData[allShowData.length - 1].isodate;
+    maxDate = getDateFromShortIsoDate(lastDateWithShows);
+  }
 
   $: dispatch("dateChanged", {
     selectedDate,
   });
 
   $: formattedDate = formatDate(selectedDate);
+
+  $: if (allShowData) {
+     findLastDateWithShows();
+   }; 
 </script>
 
 <div class="date-container">
-  {#if selectedDate}
+  {#if selectedDate && maxDate && allShowData.length}
     <h2 class="date-container__date">
       {formattedDate?.dayName}, {formattedDate?.date}
     </h2>
   {/if}
   <div class="date-container__date-picker">
-    <DatePicker bind:value={selectedDate} min={minDate} />
+    <DatePicker bind:value={selectedDate} min={minDate} max={maxDate} />
   </div>
 </div>
 

@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount } from "svelte";
+  import { getShortIsoDate } from "../functions/date";
   import ShowListItem from "./ShowListItem.svelte";
 
   const dispatch = createEventDispatcher();
@@ -10,12 +11,15 @@
   let selectedShow;
 
   function handleSelectedShow(show) {
-    console.log("show", show);
     selectedShow = show;
   }
 
   $: dispatch("selectedShowChanged", {
     selectedShow,
+  });
+
+  $: dispatch("allShowDataChanged", {
+    allShowData,
   });
 
   onMount(async () => {
@@ -37,20 +41,15 @@
     const showDate = allShowData.find(
       (showData) => showData.isodate === shortIsoDate
     );
-    selectedDateShowData = showDate.shows;
+    selectedDateShowData = showDate?.shows ?? [];
   }
 
-  function getShortIsoDate(date) {
-    return (
-      date.getFullYear().toString() +
-      (1 === (date.getMonth() + 1).toString().length ? "0" : "") +
-      (date.getMonth() + 1).toString() +
-      (1 === date.getDate().toString().length ? "0" : "") +
-      date.getDate().toString()
-    );
-  }
 </script>
-
+{#if !selectedDateShowData.length}
+<ul class="list">
+  <li class="list__item">Sorry, couldn't find any shows for this month...</li>
+</ul>
+{:else}
 <ul class="list">
   {#each selectedDateShowData as show, i}
     <li
@@ -63,6 +62,8 @@
     </li>
   {/each}
 </ul>
+{/if}
+
 
 <style>
   .list {
@@ -74,7 +75,7 @@
     height: 90vh;
     overflow: hidden;
     overflow-y: scroll;
-    max-width: 97vw;
+    max-width: 99vw;
   }
   .list__item {
     width: 100%;
@@ -98,5 +99,17 @@
   .list__item:last-child {
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
+  }
+
+  @media(max-width: 622px) {
+    .list {width: 100%; padding-right: 0;}
+  }
+
+  @media (min-width: 623px) and (max-width: 991px) {
+    .list {width: 100%; padding-right: 1rem;}
+  }
+
+  @media (min-width: 992px) {
+    .list {width: 50vw;}
   }
 </style>
