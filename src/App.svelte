@@ -39,7 +39,13 @@
 </main>
 
 <style>
+  .app-header {
+    display: flex;
+    align-items: center;
+  }
   .app-header__title {
+    padding: 1rem;
+    font-size: 4rem;
     font-family: racing-sans-one, Arial;
     text-align: center;
     color: var(--text-primary);
