@@ -2,6 +2,7 @@
   import Date from "./lib/components/Date.svelte";
   import ShowDetails from "./lib/components/ShowDetails.svelte";
   import ShowList from "./lib/components/ShowList.svelte";
+  import { formatDate } from "./lib/functions/date";
 
   function handleDateChanged(event) {
     selectedDate = event.detail.selectedDate;
@@ -18,10 +19,17 @@
   let selectedDate;
   let selectedShow;
   let allShowData;
+
+  $: formattedDate = formatDate(selectedDate);
 </script>
 
 <header class="app-header">
   <h1 class="app-header__title">Shows In Austin</h1>
+  {#if selectedDate && allShowData.length}
+  <h2 class="app-header__date">
+    {formattedDate?.dayName}, {formattedDate?.date}
+  </h2>
+{/if}
 </header>
 
 <main class="main">
@@ -42,12 +50,18 @@
   .app-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
   }
   .app-header__title {
-    padding: 1rem;
     font-size: 4rem;
     font-family: racing-sans-one, Arial;
     text-align: center;
+    color: var(--text-primary);
+  }
+  .app-header__date {
+    font-family: hind, sans-serif;
+    font-size: 1.2rem;
     color: var(--text-primary);
   }
   .main {
@@ -55,18 +69,23 @@
     align-items: start;
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     padding-bottom: 1rem;
+    margin: 10px;
   }
 
   .main__show-container__showlist-wrap {
     display: flex;
     align-items: center;
-    max-width: 97vw;
+    width: 100%;
   }
   
   @media (max-width: 991px) {
     .main {
       overflow: auto;
       gap: 2rem;
+    }
+    .app-header {
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 
@@ -82,6 +101,7 @@
       display: grid;
       align-items: start;
       grid-template-rows: auto;
+      gap: 10px;
     }
   }
 
@@ -90,6 +110,8 @@
       display: grid;
       align-items: start;
       grid-template-columns: 3fr 2fr;
+      gap: 10px;
+      margin-right: 1rem;
     }
   }
 </style>

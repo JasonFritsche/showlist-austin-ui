@@ -62,7 +62,9 @@
   .container {
     width: 100%;
     padding: 0 6px;
-    min-height: 100px;
+    height: 100%;
+    border: 6px solid var(--app-contrast-secondary);
+    border-radius: 6px;
   }
   .container__venue {
     flex: 1;
