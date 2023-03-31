@@ -75,14 +75,16 @@
     height: 90vh;
     overflow: hidden;
     overflow-y: scroll;
-    max-width: 99vw;
+    width: 100%;
+    border: 6px solid var(--app-contrast-secondary);
+    border-radius: 6px;
   }
   .list__item {
     width: 100%;
     padding: 1rem;
-    border-left: 6px solid var(--app-contrast-secondary);
-    border-right: 6px solid var(--app-contrast-secondary);
-    border-bottom: 6px solid var(--app-contrast-secondary);
+    margin: 1rem 1rem 0 1rem;
+    border: 1px solid var(--app-contrast-secondary);
+    border-radius: 6px;
   }
 
   li.list__item:focus {
@@ -90,26 +92,11 @@
     outline: none;
   }
 
-  .list__item:first-child {
-    border-top: 6px solid var(--app-contrast-secondary);
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
-  }
-
-  .list__item:last-child {
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-  }
-
-  @media(max-width: 622px) {
+  /* @media(max-width: 622px) {
     .list {width: 100%; padding-right: 0;}
   }
 
   @media (min-width: 623px) and (max-width: 991px) {
     .list {width: 100%; padding-right: 1rem;}
-  }
-
-  @media (min-width: 992px) {
-    .list {width: 50vw;}
-  }
+  } */
 </style>
