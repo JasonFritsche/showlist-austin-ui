@@ -26,7 +26,7 @@
 </script>
 
 <div class="date-container">
-  <div class="date-container__date-picker">
+  <div class="date-container__date-picker border-gradient border-gradient-pink-to-blue">
     <DatePicker bind:value={selectedDate} min={minDate} max={maxDate} />
   </div>
 </div>
@@ -42,8 +42,8 @@
 
   .date-container__date-picker {
     display: grid;
-    border: 6px solid var(--app-contrast-secondary);
-    border-radius: 6px;
+    /* border: 6px solid var(--app-contrast-secondary);
+    border-radius: 6px; */
     /* -webkit-box-shadow: -3px 0px 13px -7px rgba(163, 163, 163, 0.58);
     -moz-box-shadow: -3px 0px 13px -7px rgba(163, 163, 163, 0.58);
     box-shadow: -3px 0px 13px -7px rgba(163, 163, 163, 0.58); */

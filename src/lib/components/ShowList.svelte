@@ -46,9 +46,9 @@
 
 </script>
 {#if !selectedDateShowData.length}
-<ul class="list">
-  <li class="list__item">Sorry, couldn't find any shows for this month...</li>
-</ul>
+<div>
+  <h2>No shows found for this date</h2>
+</div>
 {:else}
 <ul class="list">
   {#each selectedDateShowData as show, i}
@@ -70,14 +70,13 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    flex: 1;
     flex-wrap: wrap;
     align-items: center;
-    height: 90vh;
     overflow: hidden;
     overflow-y: scroll;
     width: 100%;
-    border: 6px solid var(--app-contrast-secondary);
-    border-radius: 6px;
+    border: 1px solid var(--app-contrast-secondary);
   }
   .list__item {
     width: 100%;
@@ -92,11 +91,4 @@
     outline: none;
   }
 
-  /* @media(max-width: 622px) {
-    .list {width: 100%; padding-right: 0;}
-  }
-
-  @media (min-width: 623px) and (max-width: 991px) {
-    .list {width: 100%; padding-right: 1rem;}
-  } */
 </style>
