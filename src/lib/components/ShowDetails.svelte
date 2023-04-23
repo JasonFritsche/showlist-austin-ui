@@ -2,17 +2,26 @@
   import Icon from "./Icon.svelte";
 
   export let selectedShow;
+  export let allShowData;
+
+  $: if (allShowData !== '') { 
+     console.log('allShowData', allShowData)
+   }; 
 </script>
 
 <div class="container flex">
-  { #if !selectedShow}
-    <h2 class="container__venue__event flex align-center">
+  { #if !selectedShow && allShowData && allShowData?.length}
+    <h2 class="container__venue__event flex">
       Select a show to see details
     </h2>
+    {:else if !selectedShow && !allShowData?.length}
+      <h2 class="container__venue__event flex">
+        No shows found
+      </h2>
   {/if}
   <div class="container__venue">
     {#if selectedShow?.description}
-      <h2 class="container__venue__event flex align-center">
+      <h2 class="container__venue__event flex">
         {#if selectedShow?.eventLink}
           <a
             class="anchor"
@@ -63,8 +72,6 @@
     width: 100%;
     padding: 0 6px;
     height: 100%;
-    border: 6px solid var(--app-contrast-secondary);
-    border-radius: 6px;
   }
   .container__venue {
     flex: 1;
